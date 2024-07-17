@@ -14,6 +14,13 @@
             "Satyam147\\LaravelCcavenue\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Satyam147\\LaravelCcavenue\\CcAvenueServiceProvider"
+            ]
+        }
+    },
     "version": "0.0.1",
     "minimum-stability": "dev",
     "require": {
