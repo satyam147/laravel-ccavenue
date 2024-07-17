@@ -1,0 +1,22 @@
+{
+    "name": "satyam147/laravel-ccavenue",
+    "authors": [
+        {
+            "name": "Dasari Satyam",
+            "email": "satyam161211149@gmail.com"
+        }
+    ],
+    "description": "CCAvenue Payment Gateway for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Satyam147\\LaravelCcavenue\\": "src/"
+        }
+    },
+    "version": "0.0.1",
+    "minimum-stability": "dev",
+    "require": {
+        "ext-openssl": "*"
+    }
+}
