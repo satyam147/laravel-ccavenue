@@ -24,25 +24,28 @@ class CcAvenue
 
     private function encryptRequestData(): string
     {
+        $merchantId = $this->merchantId ?: config('ccavenue.merchant_id');
+        $workingKey = $this->workingKey ?: config('ccavenue.working_key');
         $data = '';
         foreach ($this->paymentData as $key => $value) {
-            $data .= $key . '=' . $value . '&';
+            $data .= $key . '=' . urlencode($value) . '&';
         }
-        $data .= 'merchant_id' . '=' . $this->merchantId ?? config('ccavenue.merchant_id') . '&';
-        $data .= 'language' . '=' . config('ccavenue.language') . '&';
-        $data .= 'currency' . '=' . config('ccavenue.currency') . '&';
+        $data .= 'merchant_id' . '=' . urlencode($merchantId) . '&';
+        $data .= 'language' . '=' . urlencode(config('ccavenue.language')) . '&';
+        $data .= 'currency' . '=' . urlencode(config('ccavenue.currency')) . '&';
         $data .= 'integration_type=iframe_normal';
 
-        return Crypto::encrypt($data, $this->workingKey ?? config('ccavenue.working_key'));
+        return Crypto::encrypt($data, $workingKey);
     }
 
 
     public function generatePaymentLink(): string
     {
+        $accessCode = $this->accessCode ?: config('ccavenue.access_code');
         $link = $this->getUrl() . '/transaction/transaction.do';
         $link .= '?command=initiateTransaction';
         $link .= '&encRequest=' . $this->encryptRequestData();
-        $link .= '&access_code=' . $this->accessCode ?? config('ccavenue.access_code');
+        $link .= '&access_code=' . $accessCode;
         return $link;
     }
 }
