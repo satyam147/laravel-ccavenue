@@ -4,10 +4,8 @@ namespace Satyam147\LaravelCcavenue;
 
 class RequestData
 {
-    public $tid;
-    public $order_id;
-    public $amount;
-
-    public $redirect_url;
-    public $cancel_url;
+    public string $order_id;
+    public int $amount;
+    public string $redirect_url;
+    public string $cancel_url;
 }

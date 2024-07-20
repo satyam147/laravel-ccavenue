@@ -38,6 +38,18 @@ class CcAvenue
         return Crypto::encrypt($data, $workingKey);
     }
 
+    public static function decryptResponse(string $encRes, ?string $workingKey = null,): array
+    {
+        $workingKey = $workingKey ?: config('ccavenue.working_key');
+        $res = Crypto::decrypt($encRes, $workingKey);
+        $data = [];
+        foreach (explode('&', $res) as $pair) {
+            [$key, $value] = explode('=', $pair);
+            $data[$key] = urldecode($value);
+        }
+        return $data;
+    }
+
 
     public function generatePaymentLink(): string
     {
