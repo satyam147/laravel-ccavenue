@@ -4,7 +4,6 @@ namespace Satyam147\LaravelCcavenue;
 
 class RequestData
 {
-    public ?string $card_name = "NA";
     public ?string $billing_name = "NA";
     public ?string $billing_address = "NA";
     public ?string $billing_city = "NA";
