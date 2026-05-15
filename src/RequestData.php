@@ -13,7 +13,7 @@ class RequestData
     public ?string $billing_tel = "NA";
     public ?string $billing_email = "NA";
     public string $order_id;
-    public int $amount;
+    public float $amount;
     public string $redirect_url;
     public string $cancel_url;
 }
